@@ -78,13 +78,12 @@ public class RNGooglePlacesModule extends ReactContextBaseJavaModule implements 
 
         String apiKey = reactContext.getApplicationContext().getString(R.string.places_api_key);
 
-        String part1 = apiKey.substring(0, 10);
-        String part2 = apiKey.substring(10, 20);
-        String part3 = apiKey.substring(20, 39);
-
         // Setup Places Client
         if(!Places.isInitialized() && !apiKey.equals("")) {
-            Places.initialize(getApplicationContext(), part1+part2+part3);
+            String part1 = apiKey.substring(0, 10);
+            String part2 = apiKey.substring(10, 20);
+            String part3 = apiKey.substring(20, 39);
+            Places.initialize(reactContext.getApplicationContext(), part1+part2+part3);
         }
 
         // Setup Places Client
